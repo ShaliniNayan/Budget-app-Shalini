@@ -1,8 +1,9 @@
 class Group < ApplicationRecord
-    has_many :categorygroups, dependent: :destroy
+  has_many :categorygroups, dependent: :destroy
   has_many :categories, through: :categorygroups, dependent: :destroy
+  belongs_to :user
 
-  # Validation of inputs
+
   validates :icon, presence: true
   validates :name, presence: true
 
