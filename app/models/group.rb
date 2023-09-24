@@ -3,7 +3,6 @@ class Group < ApplicationRecord
   has_many :categories, through: :categorygroups, dependent: :destroy
   belongs_to :user
 
-
   validates :icon, presence: true
   validates :name, presence: true
 
