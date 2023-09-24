@@ -1,1 +1,10 @@
-<h2> Select trans </h2>
+<h1><%= @category_group.name %></h1>
+
+<h2>Categories in this Group:</h2>
+<ul>
+  <% @category_group.categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back', category_groups_path %>

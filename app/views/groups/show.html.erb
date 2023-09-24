@@ -9,7 +9,7 @@
   <% @groups.each do |group| %> 
     <% if group.id == params[:id].to_i %>
       <div class = 'd-flex flex-row justify-content-between w-70'>
-          <div> <%= image_tag group.icon, class:'img' %> </div>
+          <%= image_tag 'outlet.png', class: 'img' %>
           <p> <strong><%= group.name %></strong> total spending: <strong>$<%= Group.total_spending(params[:id]) %> </strong></p>
       <%end%> 
     <%end%>

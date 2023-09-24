@@ -1,18 +1,14 @@
 class CategoriesController < ApplicationController
   def new
-    @category = Category.all
+    @category = Category.new
   end
 
   def create
-    @category = Category.new(
-      name: allowed_params[:name],
-      amount: allowed_params[:amount],
-      user_id: current_user.id
-    )
-
+    @category = current_user.categories.new(category_params)
     if @category.save
-      save_cat_group(@category)
-      redirect_to user_group_path(current_user.id, params[:group_id]),
+      category_group = CategoryGroup.find(params[:category][:group_id])
+      @category.category_groups << category_group
+      redirect_to user_group_path(current_user.id, params[:category][:group_id]),
                   notice: 'Successfully created Category spending'
     else
       render 'new', alert: 'Category group failed to create'
@@ -21,14 +17,14 @@ class CategoriesController < ApplicationController
 
   private
 
-  def save_cat_group(category)
+  def save_cat_group(_category, category_id, group_id)
     @category_group = CategoryGroup.create!(
-      category_id: category.id,
-      group_id: params[:group_id]
+      category_id:,
+      group_id:
     )
   end
 
-  def allowed_params
+  def category_params
     params.require(:category).permit(:name, :amount)
   end
 end
