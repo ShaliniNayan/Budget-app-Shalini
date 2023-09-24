@@ -1,2 +1,3 @@
 module CategoryGroupsHelper
 end
+return
