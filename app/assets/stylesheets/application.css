@@ -1,33 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
- :root {
-   --color-primary: #3374be;
-   --color-secondary: #58a91d;
-   --color-dark: #3f474f;
-   --text-color: #242527;
-   --links-color: #e8eae9;
-   --background-color: #f1f3f2;
-   --grey: #bbc1bf;
-   --main-font: 'Poppins', sans-serif;
- }
- 
- * {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
- }
- 
- body {
-   font-family: var(--main-font);
-   color: var(--color-dark);
-   background-color: var(--background-color);
- }
+:root {
+  --color-primary: #3374be;
+  --color-secondary: #58a91d;
+  --color-dark: #3f474f;
+  --text-color: #242527;
+  --links-color: #e8eae9;
+  --background-color: #f1f3f2;
+  --grey: #bbc1bf;
+  --main-font: 'Poppins', sans-serif;
+}
 
- a {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--main-font);
+  color: var(--color-dark);
+  background-color: var(--background-color);
+}
+
+a {
   text-decoration: none;
   color: var(--color-dark);
 }
-
 
 ul {
   list-style: none;
@@ -61,7 +60,6 @@ ul {
   font-size: 0.75rem;
 }
 
-
 .p-10 {
   padding: 12px;
 }
@@ -74,10 +72,10 @@ ul {
   border: 1px solid transparent;
 }
 
- 
- 
- 
- 
+
+
+
+
 .content-container {
   display: flex;
   flex-direction: column;
@@ -99,9 +97,6 @@ img {
 .expense {
   margin-top: 10px;
 }
-
-
-
 
 .btn-danger {
   margin-top: 3px;
