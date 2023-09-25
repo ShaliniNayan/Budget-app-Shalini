@@ -1,3 +1,2 @@
 module CategoriesHelper
 end
-return

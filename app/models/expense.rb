@@ -1,7 +1,7 @@
-class Category < ApplicationRecord
+class Expense < ApplicationRecord
   has_many :category_expenses, dependent: :destroy
-  has_many :expenses, through: :category_expenses
+  has_many :categories, through: :category_expenses
   belongs_to :user, class_name: 'User', foreign_key: 'user_id'
   validates :name, presence: true
-  validates :icon, presence: true
+  validates :amount, presence: true
 end

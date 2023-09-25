@@ -1,0 +1,22 @@
+<header>
+  <div class="toolbar">
+    <%= link_to image_tag("https://img.icons8.com/officel/344/back.png"), expenses_path, class: "back_btn" %>
+    <h5 class="toolbar__expenses">Expenses</h5>
+  </div>
+  <div></div>
+</header>
+<% if flash[:notice] %>
+  <p><%= notice %></p>
+<% end %>
+<%= render @category %>
+<% @expenses.each do |expense| %>
+  <div style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; background: #fffdf4;" class="separate">
+    <div><%= expense.name.capitalize %></div>
+    <div>$<%= expense.amount %></div>
+  </div>
+<% end %>
+<div>
+  <div>
+    <%= link_to "New Expense", new_expense_path, class: 'register bottom2' %>
+  </div>
+</div>

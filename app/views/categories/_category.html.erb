@@ -1,0 +1,11 @@
+<div style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+  <div id="<%= dom_id category %>" class="col">
+    <div class="toolbar2">
+      <img style="width:10%" src="<%= category.icon %>" />
+      <div><%= category.name.capitalize %></div>
+      <div><%= number_to_currency(Expense.all.where(category_id: category.id).sum(:amount)) %></div>
+      <%= link_to image_tag("https://img.icons8.com/ios/344/right--v1.png"), category, class: "back_btn" %>
+    </div>
+    <div class="date"> <%= category.created_at.strftime("%e %b %Y") %> </div>
+  </div>
+</div>
