@@ -1,7 +1,19 @@
 class HomeController < ApplicationController
-  skip_before_action :authenticate_user!
+  before_action :authenticate_login!
 
   def index
-    redirect_to categories_path if user_signed_in?
+    # No authentication required for the index action
+  end
+
+  def show
+    # Authentication is required for the show action
+  end
+
+  private
+
+  def authenticate_login!
+    return if user_signed_in?
+
+    redirect_to new_user_session_path
   end
 end

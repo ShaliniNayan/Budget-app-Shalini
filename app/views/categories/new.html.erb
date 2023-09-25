@@ -1,8 +1,8 @@
-<header>
-  <div class="toolbar">
-    <%= link_to image_tag("https://img.icons8.com/officel/344/back.png"), expenses_path, class: "back_btn" %>
-    <h5 class="toolbar__expenses">New Expense</h5>
+<%= render partial: 'shared/header', locals: { heading: 'ADD NEW CATEGORY', path: new_category_path } %>
+<%= form_with model: @category, url: categories_path, local: true, class: 'form' do |f| %>
+  <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: "Category Name", class: "form-field" %>
+  <div class="icon-container">
+    <%= f.file_field :icon %>
+    <%= f.submit "Save", class: "btn home-login" %>
   </div>
-  <div></div>
-</header>
-<%= render "form", category: @category %>
+<% end %>

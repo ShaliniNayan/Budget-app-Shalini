@@ -1,4 +1,4 @@
-<div class="newcategory">
+<div class="categorynew">
   <%= form_with(model: category) do |form| %>
     <% if category.errors.any? %>
       <div>
@@ -19,7 +19,7 @@
       <%= form.select :icon, {"🛒" => "https://cdn-icons-png.flaticon.com/512/891/891462.png", "🎮" =>"https://cdn-icons-png.flaticon.com/512/808/808439.png", "🚌" => "https://cdn-icons-png.flaticon.com/512/1034/1034795.png","💄"=>"https://img.icons8.com/external-wanicon-flat-wanicon/344/external-make-up-beauty-cosmetics-wanicon-flat-wanicon.png"},
        {} %>
     </div>
-    <div class="login">
+    <div class="signin">
       <%= form.submit "Create Category", class: "register" %>
     </div>
   <% end %>

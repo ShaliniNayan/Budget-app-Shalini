@@ -1,48 +1,42 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: [:public]
+  before_action :set_user
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @categories = Category.where(user_id: current_user.id)
-  end
-
-  def show
-    @expenses = Expense.all.where(category_id: @category.id)
+    @categories = @user.categories.includes(:expenses)
   end
 
   def new
     @category = Category.new
   end
 
-  def edit; end
-
   def create
-    @category = Category.new(category_params)
-    @category.user_id = current_user.id
+    @category = @user.categories.build(category_params)
 
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to category_url(@category), notice: 'Category was created' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @category.save
+      redirect_to categories_path, notice: 'Category added successfully'
+    else
+      flash.now[:alert] = @category.errors.full_messages.first if @category.errors.any?
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to category_url(@category), notice: 'Category updated.' }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+  def show
+    @category = Category.find(params[:id])
+
+    unless @category.user == @user
+      redirect_to categories_path, notice: 'You are not authorized to access this page!'
+      return
     end
+
+    @expenses = @category.expenses.order(created_at: :desc)
+    @total = @expenses.sum(:amount)
   end
 
   private
 
-  def set_category
-    @category = Category.find(params[:id])
+  def set_user
+    @user = current_user || User.new
   end
 
   def category_params
