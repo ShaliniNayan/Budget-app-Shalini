@@ -254,15 +254,16 @@ img {
   margin-top: 15px;
 }
 
-/* custom_styles.css */
-body {
-  font-family: Arial, sans-serif;
+.registration {
+  font-family: var(--main-font);
   background-color: #f0f0f0;
   color: #333;
   padding: 20px;
+  justify-content: center;
 }
 
 h2.signup {
+  font-family: var(--main-font);
   color: #333;
   font-size: 24px;
   margin-bottom: 20px;
@@ -281,7 +282,7 @@ h2.signup {
 .field input[type="text"],
 .field input[type="email"],
 .field input[type="password"] {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
