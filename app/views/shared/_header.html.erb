@@ -1,9 +1,25 @@
 <section class="header">
-  <a href="#" class="text-white" onclick="window.history.back(); return false;">
-    <i class="bi bi-arrow-left-circle" style="font-size: 1.5rem;"></i>
-  </a>
+  <% if back_button_enabled? %>
+    <a href="#" class="text-white" onclick="goBack(); return false;">
+      <i class="bi bi-arrow-left-circle" style="font-size: 1.5rem;"></i>
+    </a>
+  <% else %>
+    <!-- Display a placeholder or remove the arrow -->
+    <div style="width: 24px;"></div>
+  <% end %>
   <h1><%= heading %></h1>
 </section>
+
+<script>
+  function goBack() {
+    <% if back_to_categories? %>
+      window.location.href = '<%= categories_path %>';
+    <% else %>
+      window.history.back();
+    <% end %>
+  }
+</script>
+
 <div class="d-flex flex-row-reverse mb-5">
   <% if user_signed_in? %>
     <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger") %>

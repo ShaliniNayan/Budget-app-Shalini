@@ -1,8 +1,18 @@
 <%= render partial: 'shared/header', locals: { heading: 'ADD NEW CATEGORY', path: new_category_path } %>
+
 <%= form_with model: @category, url: categories_path, local: true, class: 'form' do |f| %>
-  <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: "Category Name", class: "form-field" %>
+  <div class="form-field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: "Category Name", class: "form-control" %>
+  </div>
+
   <div class="icon-container">
-    <%= f.file_field :icon %>
+    <%= f.label :icon %>
+    <%= f.file_field :icon, class: "form-control" %>
+  </div>
+
+  <div class="form-actions">
     <%= f.submit "Save", class: "btn home-login" %>
   </div>
 <% end %>
+  
