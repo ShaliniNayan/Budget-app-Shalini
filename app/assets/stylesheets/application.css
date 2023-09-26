@@ -8,7 +8,7 @@
   --links-color: #e8eae9;
   --background-color: #f1f3f2;
   --grey: #bbc1bf;
-  --main-font: 'Poppins', sans-serif;
+  --main-font: 'Proxima Nova', "Open Sans", "Gill Sans MT", "Gill Sans", corbel, arial, sans-serif;
 }
 
 * {
@@ -264,9 +264,13 @@ img {
 
 h2.signup {
   font-family: var(--main-font);
-  color: #333;
   font-size: 24px;
-  margin-bottom: 20px;
+
+  /* margin-bottom: 20px; */
+  background: cornflowerblue;
+  text-align: center;
+  margin: 0.3rem 20px;
+  color: white;
 }
 
 .field {
