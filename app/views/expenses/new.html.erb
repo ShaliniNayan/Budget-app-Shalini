@@ -1,0 +1,17 @@
+<%= render partial: 'shared/header', locals: { heading: 'ADD NEW EXPENSE', path: category_path(@category) } %>
+<%= form_with model: @expense, url: category_expenses_path, local: true do |f| %>
+ <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: "Name", class: "form-field" %>
+<%= f.number_field :amount, autofocus: false, autocomplete: "off", placeholder: "Amount", class: "form-field" %>
+  <div class="checkbox">
+    <%= f.label :category_ids, "Select one or more categories:" %>
+    <div class="checkbox-btn">
+      <%= f.collection_check_boxes :category_ids, current_user.categories, :id, :name do |b| %>
+        <div>
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    </div>
+    <%= f.submit "Save", class: "btn home-login" %>
+  </div>
+<%end%>
